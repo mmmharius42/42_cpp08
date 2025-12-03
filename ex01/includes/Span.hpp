@@ -15,6 +15,8 @@
 #include <vector>
 #include <exception>
 #include <algorithm>
+#include <climits>
+#include <iostream>
 
 class Span {
     private :
@@ -27,22 +29,34 @@ class Span {
         ~Span();
         
         void    addNumber(int number);
-        int     shortestSpan();
-        int     longestSpan();
+        int     shortestSpan() const;
+        int     longestSpan() const;
+
+        template <typename InputIt>
+        void addNumbers(InputIt first, InputIt last);
 };
+
 
 class OutOfSize : public std::exception {
     public :
-        virtual const char* what() const throw() {
-            return "size reached !";
-        }
+    virtual const char* what() const throw() {
+        return "size reached !";
+    }
 };
 
 class NoSpanFound : public std::exception {
     public :
-        virtual const char* chat() const throw() {
-            return "No number or only one in this span !";
-        }
+    virtual const char* what() const throw() {
+        return "No number or only one in this span !";
+    }
 };
+
+template <typename InputIt>
+void Span::addNumbers(InputIt first, InputIt last) {
+    while(first != last) {
+        addNumber(static_cast<int>(first));
+        ++first;
+    }
+}
 
 #endif
