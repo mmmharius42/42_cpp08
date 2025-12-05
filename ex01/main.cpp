@@ -15,11 +15,18 @@
 int main()
 {
     try {
-        Span sp = Span(1);
+        Span sp = Span(11000);
         sp.addNumber(17);
-        // sp.addNumber(9);
-        // sp.addNumber(11);
-        // sp.addNumbers(0, 51000);
+        sp.addNumber(9);
+        sp.addNumber(11);
+        std::cout << sp.longestSpan() << std::endl;
+        std::cout << sp.shortestSpan() << std::endl;
+
+        std::vector<int> temp;
+        for (int i = 0; i < 10000; ++i)
+            temp.push_back(i);
+        
+        sp.addNumbers(temp.begin(), temp.end());
         std::cout << sp.shortestSpan() << std::endl;
         std::cout << sp.longestSpan() << std::endl;
     }
