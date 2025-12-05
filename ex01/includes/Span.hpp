@@ -54,7 +54,7 @@ class NoSpanFound : public std::exception {
 template <typename InputIt>
 void Span::addNumbers(InputIt first, InputIt last) {
     while(first != last) {
-        addNumber(static_cast<int>(first));
+        addNumber(*first);
         ++first;
     }
 }
