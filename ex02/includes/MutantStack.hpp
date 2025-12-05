@@ -21,7 +21,6 @@ template <typename T>
 class MutantStack : public std::stack<T>
 {
 public:
-    // Constructeurs et destructeur
     MutantStack() : std::stack<T>() {}
     MutantStack(const MutantStack& other) : std::stack<T>(other) {}
     MutantStack& operator=(const MutantStack& other) {
